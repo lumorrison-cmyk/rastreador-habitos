@@ -1,0 +1,24 @@
+# Dados exportados do usuário
+habitos-*.json
+whatsapp-config.json
+
+# Configurações locais
+.claude/settings.local.json
+
+# Node modules (se usar)
+node_modules/
+
+# Dependências
+package-lock.json
+yarn.lock
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db

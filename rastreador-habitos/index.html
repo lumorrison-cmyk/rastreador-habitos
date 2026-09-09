@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meus Hábitos</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>🌱 Meus Hábitos</h1>
+      <div class="week-nav">
+        <button type="button" id="prevWeek" class="week-nav-btn" aria-label="Semana anterior">‹</button>
+        <p class="subtitle" id="weekLabel"></p>
+        <button type="button" id="nextWeek" class="week-nav-btn" aria-label="Próxima semana">›</button>
+      </div>
+    </header>
+
+    <form id="addForm" class="add-form">
+      <input type="text" id="habitInput" placeholder="Novo hábito (ex: beber água)" maxlength="40" required>
+      <button type="submit">Adicionar</button>
+    </form>
+
+    <div id="emptyState" class="empty-state" hidden>
+      <p>Nenhum hábito ainda. Adicione o primeiro acima! ✨</p>
+    </div>
+
+    <div id="habitList" class="habit-list"></div>
+
+    <footer>
+      <div class="summary" id="summary"></div>
+      <div class="data-actions">
+        <button type="button" id="exportBtn">⬇ Exportar dados</button>
+        <button type="button" id="importBtn">⬆ Importar dados</button>
+        <button type="button" id="whatsappBtn">🔔 Lembrete WhatsApp</button>
+        <input type="file" id="importFile" accept="application/json" hidden>
+      </div>
+    </footer>
+  </div>
+
+  <div id="whatsappModal" class="modal-overlay" hidden>
+    <div class="modal">
+      <h2>🔔 Lembrete por WhatsApp</h2>
+      <p class="modal-hint">
+        Preencha os dados abaixo e clique em <strong>Baixar configuração</strong>.
+        Depois, mova o arquivo baixado (<code>whatsapp-config.json</code>) para a pasta
+        <code>rastreador-habitos</code>, substituindo o arquivo existente.
+      </p>
+
+      <label class="modal-label" for="apiKeyInput">Chave de API do CallMeBot</label>
+      <input type="text" id="apiKeyInput" class="modal-input" placeholder="ex: 123456" autocomplete="off">
+
+      <label class="modal-label" for="phoneInput">Seu número de WhatsApp (com código do país)</label>
+      <input type="text" id="phoneInput" class="modal-input" placeholder="ex: 5511999998888" autocomplete="off">
+
+      <label class="modal-label" for="timeInput">Horário do lembrete</label>
+      <input type="time" id="timeInput" class="modal-input" value="08:00">
+
+      <div class="modal-label">Hábitos que serão enviados</div>
+      <ul id="whatsappHabitPreview" class="modal-habit-preview"></ul>
+
+      <div class="modal-actions">
+        <button type="button" id="loadConfigBtn">⬆ Carregar arquivo existente</button>
+        <input type="file" id="loadConfigFile" accept="application/json" hidden>
+        <button type="button" id="saveConfigBtn" class="primary">⬇ Baixar configuração</button>
+      </div>
+      <button type="button" id="closeModalBtn" class="modal-close" aria-label="Fechar">✕</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
